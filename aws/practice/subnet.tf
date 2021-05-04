@@ -1,6 +1,6 @@
 resource "aws_subnet" "prac_public" {
   vpc_id            = aws_vpc.practice.id
-  cidr_block        = "172.26.10.0/24"
+  cidr_block        = var.prac_public_cidr_block
   availability_zone = "ap-northeast-1a"
 
   tags = {
@@ -10,7 +10,7 @@ resource "aws_subnet" "prac_public" {
 
 resource "aws_subnet" "prac_priv1" {
   vpc_id            = aws_vpc.practice.id
-  cidr_block        = "172.26.20.0/24"
+  cidr_block        = var.prac_private1_cidr_block
   availability_zone = "ap-northeast-1a"
 
   tags = {
@@ -20,7 +20,7 @@ resource "aws_subnet" "prac_priv1" {
 
 resource "aws_subnet" "prac_priv2" {
   vpc_id            = aws_vpc.practice.id
-  cidr_block        = "172.26.30.0/24"
+  cidr_block        = var.prac_private2_cidr_block
   availability_zone = "ap-northeast-1c"
 
   tags = {
