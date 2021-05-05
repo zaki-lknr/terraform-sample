@@ -21,3 +21,18 @@ resource "aws_instance" "bastion" {
     Name = "bastion-${count.index}"
   }
 }
+
+resource "aws_instance" "server" {
+  for_each = toset(var.host_list)
+
+  ami                         = data.aws_ssm_parameter.amzn2_ami.value
+  instance_type               = "t3.nano"
+  key_name                    = aws_key_pair.my_key.id
+  subnet_id                   = aws_subnet.prac_priv2.id
+  security_groups             = [aws_security_group.allow_ssh_icmp.id]
+  associate_public_ip_address = false
+
+  tags = {
+    Name = each.value
+  }
+}
