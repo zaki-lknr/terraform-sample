@@ -8,7 +8,7 @@ resource "aws_key_pair" "my_key" {
 }
 
 resource "aws_instance" "bastion" {
-  count = 3
+  count = var.host_count
 
   ami                         = data.aws_ssm_parameter.amzn2_ami.value
   instance_type               = "t3.nano"
