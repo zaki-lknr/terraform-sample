@@ -14,7 +14,7 @@ resource "aws_instance" "bastion" {
   instance_type               = "t3.nano"
   key_name                    = aws_key_pair.my_key.id
   subnet_id                   = aws_subnet.prac_public.id
-  security_groups             = [aws_security_group.allow_ssh_icmp.id]
+  vpc_security_group_ids      = [aws_security_group.allow_ssh_icmp.id]
   associate_public_ip_address = true
 
   tags = {
@@ -29,7 +29,7 @@ resource "aws_instance" "server" {
   instance_type               = "t3.nano"
   key_name                    = aws_key_pair.my_key.id
   subnet_id                   = aws_subnet.prac_priv2.id
-  security_groups             = [aws_security_group.allow_ssh_icmp.id]
+  vpc_security_group_ids      = [aws_security_group.allow_ssh_icmp.id]
   associate_public_ip_address = false
 
   tags = {
