@@ -10,3 +10,7 @@ terraform {
 provider "aws" {
   region  = "ap-northeast-1"
 }
+
+module "aws_sample" {
+  source = "./modules/aws_sample"
+}
