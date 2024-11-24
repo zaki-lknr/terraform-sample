@@ -21,6 +21,7 @@ variable "prac_private2_cidr_block" {
     default     = "172.26.30.0/24"
 }
 
+
 # 環境数
 variable "host_count" {
     description = "host count"
